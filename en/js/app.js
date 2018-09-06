@@ -1,5 +1,5 @@
 var APP = {
-    
+
     anchorScroll: () => {
         $('.anchor').click(function (e) {
             e.preventDefault();
@@ -22,14 +22,14 @@ var APP = {
         let corrector = -120;
 
         if (hash != '') {
-           
 
-        $("html, body").animate({
-            scrollTop: $(hash).offset().top + corrector
-        }, 1000);
 
-        return false;
-       }
+            $("html, body").animate({
+                scrollTop: $(hash).offset().top + corrector
+            }, 1000);
+
+            return false;
+        }
 
     },
 
@@ -38,17 +38,17 @@ var APP = {
 
         function recurse(index) {
 
-            var interval = setInterval(function() {
+            var interval = setInterval(function () {
 
                 if (index == 0) {
-                    if (i >= 0 && i <= 9) {
-                        document.getElementById('submited-text').innerHTML += '<span class="mark">'+strings[index][i]+'</span>';
+                    if (i >= 3 && i <= 19) {
+                        document.getElementById('submited-text').innerHTML += '<span class="mark">' + strings[index][i] + '</span>';
                     } else {
                         document.getElementById('submited-text').innerHTML += strings[index][i];
                     }
                 } else if (index == 1) {
                     if (i >= 14 && i <= 27) {
-                        document.getElementById('submited-text').innerHTML += '<span class="mark">'+strings[index][i]+'</span>';
+                        document.getElementById('submited-text').innerHTML += '<span class="mark">' + strings[index][i] + '</span>';
                     } else {
                         document.getElementById('submited-text').innerHTML += strings[index][i];
                     }
@@ -56,32 +56,32 @@ var APP = {
 
                 i++;
 
-                if (i>=strings[index].length) {
-                    
+                if (i >= strings[index].length) {
+
                     window.clearInterval(interval)
                     i = 0;
 
                     index = index == 1 ? 0 : 1;
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         document.getElementById('submited-text').innerHTML = '';
                         recurse(index);
-                    },3000)
-                } 
-                
+                    }, 3000)
+                }
+
             }, 20);
         }
 
         recurse(0);
-        
+
     },
 
-    navbarScrolled: (events)  => {
+    navbarScrolled: (events) => {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop
 
         if (scrolled > 0) {
             $('.navbar').addClass('scrolled');
-        }else {
+        } else {
             $('.navbar').removeClass('scrolled');
         }
 
